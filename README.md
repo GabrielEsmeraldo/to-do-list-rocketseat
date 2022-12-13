@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
- <img src="/assets/to-do-list-rocketseat.png" alt="" />
+ <img src="/src/assets/to-do-list-rocketseat.png" alt="" />
 </p>
 
 ## 💻 Sobre
