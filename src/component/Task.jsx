@@ -1,15 +1,20 @@
 import styles from '../styles/Task.module.css'
 import { Trash } from 'phosphor-react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-export function Task({ idTask, taskTitle, tasks, setTasks, completed, setCompletedTasks, completedTasks }) {
-
+export function Task({
+  idTask,
+  taskTitle,
+  tasks,
+  setTasks,
+  completed,
+  setCompletedTasks,
+}) {
   const [checkbox, setCheckbox] = useState(false)
 
   function taskTitleToDelete(taskToDelete) {
-    const tasksWithoutDeleted = tasks.filter(task => {
-      return task.id != taskToDelete
+    const tasksWithoutDeleted = tasks.filter((task) => {
+      return task.id !== taskToDelete
     })
     setTasks(tasksWithoutDeleted)
   }
@@ -20,33 +25,39 @@ export function Task({ idTask, taskTitle, tasks, setTasks, completed, setComplet
 
   function handleTaskCompleted() {
     setCheckbox(!checkbox)
-    setTasks(tasks.map(task => {
-      if (task.id === idTask) {
-        return {
-          ...task, isComplete: !task.isComplete
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === idTask) {
+          return {
+            ...task,
+            isComplete: !task.isComplete,
+          }
+        } else {
+          return {
+            ...task,
+          }
         }
-      } else {
-        return {
-          ...task
-        }
-      }
-    }))
+      }),
+    )
   }
 
   useEffect(() => {
-    let counter = 0;
+    let counter = 0
     for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].isComplete === true) counter++;
+      if (tasks[i].isComplete === true) counter++
     }
 
     setCompletedTasks(counter)
-  }, [checkbox])
+  }, [checkbox, tasks, setCompletedTasks])
 
-  if (completed == true && checkbox == true) {
-
+  if (completed === true && checkbox === true) {
     return (
       <div className={styles.task}>
-        <input type="checkbox" className={styles.checkboxBtn} onClick={handleTaskCompleted} />
+        <input
+          type="checkbox"
+          className={styles.checkboxBtn}
+          onClick={handleTaskCompleted}
+        />
         <div className={styles.content}>
           <p className={styles.underline}>{taskTitle}</p>
         </div>
@@ -59,7 +70,11 @@ export function Task({ idTask, taskTitle, tasks, setTasks, completed, setComplet
   } else {
     return (
       <div className={styles.task}>
-        <input type="checkbox" className={styles.checkboxBtn} onClick={handleTaskCompleted} />
+        <input
+          type="checkbox"
+          className={styles.checkboxBtn}
+          onClick={handleTaskCompleted}
+        />
         <div className={styles.content}>
           <p className={styles.normalParagraph}>{taskTitle}</p>
         </div>
@@ -70,6 +85,4 @@ export function Task({ idTask, taskTitle, tasks, setTasks, completed, setComplet
       </div>
     )
   }
-
-
 }
