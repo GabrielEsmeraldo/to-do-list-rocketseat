@@ -24,6 +24,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - CSS Modules
 - JavaScript
 - React
+- Eslint
 
 ## 📚 Bibliotecas
 
