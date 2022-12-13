@@ -1,0 +1,10 @@
+.emptyTasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-300);
+  padding-top: 6.4rem;
+  gap: 1.6rem;
+  border-top: 0.1rem solid var(--gray-400);
+}
