@@ -19,6 +19,8 @@ function App() {
   }
 
   function handleCreateNewTask() {
+    event.preventDefault()
+
     const newTask = {
       id: uuidv4(),
       title: newTaskTitle,
@@ -34,17 +36,18 @@ function App() {
       <Header />
 
       <div className={styles.wrapper}>
-        <div className={styles.addTask}>
+        <form className={styles.addTask} onSubmit={handleCreateNewTask}>
           <input
             type="text"
             value={newTaskTitle}
             placeholder="Adicione uma nova tarefa"
             onChange={handleCaptureTaskTitle}
+            required
           />
-          <button onClick={handleCreateNewTask}>
+          <button>
             Criar <PlusCircle size={18} />
           </button>
-        </div>
+        </form>
 
         <div className={styles.taskList}>
           <header>
